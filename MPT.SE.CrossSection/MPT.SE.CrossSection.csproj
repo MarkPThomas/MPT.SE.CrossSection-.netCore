@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="BasicSections\Cruciform.cs" />
+    <Compile Remove="BasicSections\Hat.cs" />
+    <Compile Remove="BasicSections\Zee.cs" />
+    <Compile Remove="Cruciform.cs" />
+    <Compile Remove="Hat.cs" />
+    <Compile Remove="RectangularTube.cs" />
+    <Compile Remove="Zee.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ConcreteSections\" />
+    <Folder Include="CompositeSections\" />
+  </ItemGroup>
+
+</Project>
