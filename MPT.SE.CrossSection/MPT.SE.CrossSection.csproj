@@ -2,21 +2,45 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Authors>Mark P Thomas</Authors>
+    <Company>Mark P Thomas, Inc.</Company>
+    <Copyright>Copyright (c) 2020. All rights reserved.</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>MPT.SE.CrossSection.xml</DocumentationFile>
+    <OutputPath>bin\Debug\netcoreapp3.1\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="AreaProperties\MomentOfArea.cs" />
     <Compile Remove="BasicSections\Cruciform.cs" />
+    <Compile Remove="BasicSections\CruciformSection.cs" />
     <Compile Remove="BasicSections\Hat.cs" />
+    <Compile Remove="BasicSections\HatSection.cs" />
     <Compile Remove="BasicSections\Zee.cs" />
+    <Compile Remove="BasicSections\ZeeSection.cs" />
     <Compile Remove="Cruciform.cs" />
     <Compile Remove="Hat.cs" />
+    <Compile Remove="AreaProperties\Area.cs" />
+    <Compile Remove="AreaProperties\MomentOfMass.cs" />
     <Compile Remove="RectangularTube.cs" />
+    <Compile Remove="StressProperties\ConstrainedPropertiesByAxesSigned.cs" />
     <Compile Remove="Zee.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="ConcreteSections\" />
     <Folder Include="CompositeSections\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MPT.Geometry">
+      <HintPath>..\lib\MPT.Geometry.dll</HintPath>
+    </Reference>
+    <Reference Include="MPT.Math">
+      <HintPath>..\..\..\Geometry\lib\MPT.Math.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

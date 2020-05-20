@@ -2,13 +2,27 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="nunit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.15.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MPT.SE.CrossSection\MPT.SE.CrossSection.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="MPT.Geometry">
+      <HintPath>..\lib\MPT.Geometry.dll</HintPath>
+    </Reference>
+    <Reference Include="MPT.Math">
+      <HintPath>..\lib\MPT.Math.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\lib\nunit.framework.dll</HintPath>
     </Reference>
