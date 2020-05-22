@@ -1,10 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <Authors>Mark P Thomas</Authors>
     <Company>Mark P Thomas, Inc.</Company>
     <Copyright>Copyright (c) 2020. All rights reserved.</Copyright>
+    <Description>A library and classes for working with various cross-sections for statics and structural engineering purposes.</Description>
+    <DebugType>full</DebugType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
