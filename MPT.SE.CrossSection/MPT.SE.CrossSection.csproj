@@ -41,7 +41,7 @@
       <HintPath>..\lib\MPT.Geometry.dll</HintPath>
     </Reference>
     <Reference Include="MPT.Math">
-      <HintPath>..\..\..\Geometry\lib\MPT.Math.dll</HintPath>
+      <HintPath>..\lib\MPT.Math.dll</HintPath>
     </Reference>
   </ItemGroup>
 
