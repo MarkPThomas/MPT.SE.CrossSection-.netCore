@@ -7,7 +7,7 @@ A library and classes for working with various cross-sections for statics and st
 [![AppVeyor tests](https://img.shields.io/appveyor/tests/MarkPThomas/mpt-se-crosssection-netcore.svg)](https://ci.appveyor.com/project/MarkPThomas/mpt-se-crosssection-netcore/build/tests)
 [![Coverage Status](https://coveralls.io/repos/github/MarkPThomas/MPT.SE.CrossSection-.netCore/badge.svg?branch=master&kill_cache=1)](https://coveralls.io/github/MarkPThomas/MPT.SE.CrossSection-.netCore?branch=master&kill_cache=1) (via Coveralls)
 
-
+ 
 **SonarCloud**: [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=MarkPThomas_MPT.SE.CrossSection-.netCore&metric=alert_status)](https://sonarcloud.io/dashboard?id=MarkPThomas_MPT.SE.CrossSection-.netCore)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=MarkPThomas_MPT.SE.CrossSection-.netCore&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=MarkPThomas_MPT.SE.CrossSection-.netCore)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=MarkPThomas_MPT.SE.CrossSection-.netCore&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=MarkPThomas_MPT.SE.CrossSection-.netCore)
