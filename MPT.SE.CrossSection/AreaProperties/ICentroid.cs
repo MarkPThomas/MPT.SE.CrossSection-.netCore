@@ -24,11 +24,11 @@ namespace MPT.SE.CrossSection.AreaProperties
         /// The center of gravity (elastic neutral axis) offset from the geometric center of the extents along the 22-axis.  [L]
         /// </summary>
         /// <value>The center of gravity.</value>
-        public double CentroidOffset_22 { get; }
+        double CentroidOffset_22 { get; }
         /// <summary>
         /// The center of gravity (elastic neutral axis) offset from the geometric center of the extents along the 22-axis.  [L]
         /// </summary>
         /// <value>The center of gravity.</value>
-        public double CentroidOffset_33 { get; }
+        double CentroidOffset_33 { get; }
     }
 }

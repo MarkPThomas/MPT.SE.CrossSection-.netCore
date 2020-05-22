@@ -25,37 +25,37 @@ namespace MPT.SE.CrossSection.StressProperties
         /// Shear area along the major-axis. [L^2]
         /// </summary>
         /// <value>a v major.</value>
-        public double A_vMajor { get; }
+        double A_vMajor { get; }
 
         /// <summary>
         /// Shear area along the minor-axis. [L^2]
         /// </summary>
         /// <value>a v minor.</value>
-        public double A_vMinor { get; }
+        double A_vMinor { get; }
 
 
         /// <summary>
         /// Coordinates of the shear center offset from the elastic centroid (elastic neutral axis) used for major-axis shear. [L]
         /// </summary>
         /// <value>The shear center offset major.</value>
-        public double ShearCenterOffset_major { get; }
+        double ShearCenterOffset_major { get; }
 
         /// <summary>
         /// Coordinates of the shear center offset from the elastic centroid (elastic neutral axis) used for minor-axis shear. [L]
         /// </summary>
         /// <value>The shear center offset minor.</value>
-        public double ShearCenterOffset_minor { get; }
+        double ShearCenterOffset_minor { get; }
 
         /// <summary>
         /// Polar radius of gyration about the shear center. [L]
         /// </summary>
         /// <value>The r o.</value>
-        public double r_o { get; }
+        double r_o { get; }
 
         /// <summary>
         /// Gets the h.
         /// </summary>
         /// <value>The h.</value>
-        public double H { get; }
+        double H { get; }
     }
 }

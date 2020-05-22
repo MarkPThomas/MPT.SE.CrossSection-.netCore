@@ -23,12 +23,12 @@ namespace MPT.SE.CrossSection.AreaProperties
         /// Radius of gyration about the major-axis. [L]
         /// </summary>
         /// <value>The r major.</value>
-        public double r_major { get; }
+        double r_major { get; }
 
         /// <summary>
         /// Radius of gyration about the minor-axis. [L]
         /// </summary>
         /// <value>The r minor.</value>
-        public double r_minor { get; }
+        double r_minor { get; }
     }
 }

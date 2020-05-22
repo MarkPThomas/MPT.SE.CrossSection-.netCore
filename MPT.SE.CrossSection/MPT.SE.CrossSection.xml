@@ -1,0 +1,842 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MPT.SE.CrossSection</name>
+    </assembly>
+    <members>
+        <member name="T:MPT.SE.CrossSection.AreaProperties.IArea">
+            <summary>
+            Interface IArea
+            </summary>
+        </member>
+        <member name="P:MPT.SE.CrossSection.AreaProperties.IArea.A_g">
+            <summary>
+            Gross area [L^2].
+            </summary>
+            <value>a g.</value>
+        </member>
+        <member name="T:MPT.SE.CrossSection.AreaProperties.ICentroid">
+            <summary>
+            Interface ICentroid
+            </summary>
+        </member>
+        <member name="P:MPT.SE.CrossSection.AreaProperties.ICentroid.CentroidOffset_22">
+            <summary>
+            The center of gravity (elastic neutral axis) offset from the geometric center of the extents along the 22-axis.  [L]
+            </summary>
+            <value>The center of gravity.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.AreaProperties.ICentroid.CentroidOffset_33">
+            <summary>
+            The center of gravity (elastic neutral axis) offset from the geometric center of the extents along the 22-axis.  [L]
+            </summary>
+            <value>The center of gravity.</value>
+        </member>
+        <member name="T:MPT.SE.CrossSection.AreaProperties.IRadiusOfGyration">
+            <summary>
+            Interface IRadiusOfGyration
+            </summary>
+        </member>
+        <member name="P:MPT.SE.CrossSection.AreaProperties.IRadiusOfGyration.r_major">
+            <summary>
+            Radius of gyration about the major-axis. [L]
+            </summary>
+            <value>The r major.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.AreaProperties.IRadiusOfGyration.r_minor">
+            <summary>
+            Radius of gyration about the minor-axis. [L]
+            </summary>
+            <value>The r minor.</value>
+        </member>
+        <member name="T:MPT.SE.CrossSection.AreaProperties.IRotationalInertia">
+            <summary>
+            Interface IRotationalInertia
+            </summary>
+        </member>
+        <member name="P:MPT.SE.CrossSection.AreaProperties.IRotationalInertia.I_major">
+            <summary>
+            Moment of inertia about the major-axis. [L^4]
+            </summary>
+            <value>The i major.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.AreaProperties.IRotationalInertia.I_minor">
+            <summary>
+            Moment of inertia about the minor-axis. [L^4]
+            </summary>
+            <value>The i minor.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.AreaProperties.IRotationalInertia.I_product">
+            <summary>
+            Product of inertia. [L^4]
+            If an area has at least one axis of symmetry, the product of inertia is zero.
+            </summary>
+            <value>The i product.</value>
+        </member>
+        <member name="T:MPT.SE.CrossSection.AreaProperties.MomentOfInertia">
+            <summary>
+            Represents moment of inertia (2nd moment of area) properties of a cross section.
+            </summary>
+        </member>
+        <member name="P:MPT.SE.CrossSection.AreaProperties.MomentOfInertia.I_33">
+            <summary>
+            Moment of inertia about the 33-axis. [L^4]
+            </summary>
+            <value>The i 33.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.AreaProperties.MomentOfInertia.I_22">
+            <summary>
+            Moment of inertia about the 22-axis. [L^4]
+            </summary>
+            <value>The i 22.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.AreaProperties.MomentOfInertia.I_23">
+            <summary>
+            Product of inertia. [L^4]
+            If an area has at least one axis of symmetry, the product of inertia is zero.
+            </summary>
+            <value>The i 23.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.AreaProperties.MomentOfInertia.J">
+            <summary>
+            Polar moment of inertia. [L^4]
+            </summary>
+            <value>The j.</value>
+        </member>
+        <member name="M:MPT.SE.CrossSection.AreaProperties.MomentOfInertia.#ctor(System.Double,System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MPT.SE.CrossSection.AreaProperties.MomentOfInertia"/> struct.
+            </summary>
+            <param name="i22">Moment of inertia about the 22-axis.</param>
+            <param name="i33">Moment of inertia about the 33-axis.</param>
+            <param name="i23">Product of inertia. If an area has at least one axis of symmetry, the product of inertia is zero.</param>
+        </member>
+        <member name="T:MPT.SE.CrossSection.AreaProperties.RadiusOfGyration">
+            <summary>
+            Represents radius of gyration properties of a cross section.
+            </summary>
+        </member>
+        <member name="P:MPT.SE.CrossSection.AreaProperties.RadiusOfGyration.r22">
+            <summary>
+            Radius of gyration about the 22-axis. [L]
+            </summary>
+            <value>The R22.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.AreaProperties.RadiusOfGyration.r33">
+            <summary>
+            Radius of gyration about the 33-axis. [L]
+            </summary>
+            <value>The R33.</value>
+        </member>
+        <member name="M:MPT.SE.CrossSection.AreaProperties.RadiusOfGyration.#ctor(System.Double,System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MPT.SE.CrossSection.AreaProperties.RadiusOfGyration"/> class.
+            </summary>
+            <param name="area">The area.</param>
+            <param name="i22">Moment of inertia about the 22-axis.</param>
+            <param name="i33">Moment of inertia about the 33-axis.</param>
+        </member>
+        <member name="M:MPT.SE.CrossSection.AreaProperties.RadiusOfGyration.Calculate(System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MPT.SE.CrossSection.AreaProperties.RadiusOfGyration" /> class.
+            </summary>
+            <param name="rotationalInertia">The rotational inertia considered.</param>
+            <param name="areaGross">The gross area of the cross section.</param>
+            <returns>System.Double.</returns>
+        </member>
+        <member name="T:MPT.SE.CrossSection.BasicSections.BasicBendingSection">
+            <summary>
+            Cross section with properties related to bending resistance.
+            Implements the <see cref="T:MPT.SE.CrossSection.BasicSections.BasicSection" />
+            Implements the <see cref="T:MPT.SE.CrossSection.StressProperties.IBending" />
+            </summary>
+            <seealso cref="T:MPT.SE.CrossSection.BasicSections.BasicSection" />
+            <seealso cref="T:MPT.SE.CrossSection.StressProperties.IBending" />
+        </member>
+        <member name="F:MPT.SE.CrossSection.BasicSections.BasicBendingSection._elasticBendingProperties">
+            <summary>
+            The elastic bending properties.
+            </summary>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicBendingSection.S_majorPositive">
+            <summary>
+            Elastic section modulus about the major-axis under positive bending. [L^3]
+            </summary>
+            <value>The s major positive.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicBendingSection.S_majorNegative">
+            <summary>
+            Elastic section modulus about the major-axis under negative bending. [L^3]
+            </summary>
+            <value>The s major negative.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicBendingSection.S_minorPositive">
+            <summary>
+            Elastic section modulus about the minor-axis under positive bending. [L^3]
+            </summary>
+            <value>The s minor positive.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicBendingSection.S_minorNegative">
+            <summary>
+            Elastic section modulus about the minor-axis under negative bending. [L^3]
+            </summary>
+            <value>The s minor negative.</value>
+        </member>
+        <member name="F:MPT.SE.CrossSection.BasicSections.BasicBendingSection._plasticBendingProperties">
+            <summary>
+            The plastic bending properties.
+            </summary>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicBendingSection.PlasticCentroidOffset_major">
+            <summary>
+            Coordinates of the plastic centroid (plastic neutral axis) offset from the elastic centroid (elastic neutral axis) used for major-axis bending. [L]
+            </summary>
+            <value>The plastic centroid.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicBendingSection.PlasticCentroidOffset_minor">
+            <summary>
+            Coordinates of the plastic centroid (plastic neutral axes) offset from the elastic centroid (elastic neutral axis) used for minor-axis bending. [L]
+            </summary>
+            <value>The plastic centroid.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicBendingSection.Z_major">
+            <summary>
+            Plastic section modulus about the major-axis. [L^3]
+            </summary>
+            <value>The z major.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicBendingSection.Z_minor">
+            <summary>
+            Plastic section modulus about the minor-axis. [L^3]
+            </summary>
+            <value>The z minor.</value>
+        </member>
+        <member name="M:MPT.SE.CrossSection.BasicSections.BasicBendingSection.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MPT.SE.CrossSection.BasicSections.BasicBendingSection"/> class.
+            </summary>
+        </member>
+        <member name="M:MPT.SE.CrossSection.BasicSections.BasicBendingSection.GetElasticBendingProperties">
+            <summary>
+            Gets the elastic bending properties.
+            </summary>
+            <returns>ElasticBendingProperties.</returns>
+        </member>
+        <member name="M:MPT.SE.CrossSection.BasicSections.BasicBendingSection.GetPlasticBendingProperties">
+            <summary>
+            Gets the plastic bending properties.
+            </summary>
+            <returns>PlasticBendingProperties.</returns>
+        </member>
+        <member name="T:MPT.SE.CrossSection.BasicSections.BasicBendingShearSection">
+            <summary>
+            Cross section with properties related to bending and shear resistance.
+            Implements the <see cref="T:MPT.SE.CrossSection.BasicSections.BasicBendingSection" />
+            Implements the <see cref="T:MPT.SE.CrossSection.StressProperties.IShear" />
+            </summary>
+            <seealso cref="T:MPT.SE.CrossSection.BasicSections.BasicBendingSection" />
+            <seealso cref="T:MPT.SE.CrossSection.StressProperties.IShear" />
+        </member>
+        <member name="F:MPT.SE.CrossSection.BasicSections.BasicBendingShearSection._shearProperties">
+            <summary>
+            The shear properties.
+            </summary>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicBendingShearSection.A_vMajor">
+            <summary>
+            Shear area along the major-axis. [L^2]
+            </summary>
+            <value>a v major.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicBendingShearSection.A_vMinor">
+            <summary>
+            Shear area along the minor-axis. [L^2]
+            </summary>
+            <value>a v minor.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicBendingShearSection.ShearCenterOffset_major">
+            <summary>
+            Coordinates of the shear center offset from the elastic centroid (elastic neutral axis) used for major-axis shear. [L]
+            </summary>
+            <value>The shear center offset major.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicBendingShearSection.ShearCenterOffset_minor">
+            <summary>
+            Coordinates of the shear center offset from the elastic centroid (elastic neutral axis) used for minor-axis shear. [L]
+            </summary>
+            <value>The shear center offset minor.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicBendingShearSection.r_o">
+            <summary>
+            Polar radius of gyration about the shear center. [L]
+            </summary>
+            <value>The r o.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicBendingShearSection.H">
+            <summary>
+            Gets the h.
+            </summary>
+            <value>The h.</value>
+        </member>
+        <member name="M:MPT.SE.CrossSection.BasicSections.BasicBendingShearSection.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MPT.SE.CrossSection.BasicSections.BasicBendingShearSection"/> class.
+            </summary>
+        </member>
+        <member name="M:MPT.SE.CrossSection.BasicSections.BasicBendingShearSection.GetShearProperties">
+            <summary>
+            Gets the shear properties.
+            </summary>
+            <returns>ShearProperties.</returns>
+        </member>
+        <member name="T:MPT.SE.CrossSection.BasicSections.BasicBendingShearTorsionSection">
+            <summary>
+            Cross section with properties related to bending, shear and torsional resistance.
+            Implements the <see cref="T:MPT.SE.CrossSection.BasicSections.BasicBendingShearSection" />
+            Implements the <see cref="T:MPT.SE.CrossSection.StressProperties.ITorsion" />
+            </summary>
+            <seealso cref="T:MPT.SE.CrossSection.BasicSections.BasicBendingShearSection" />
+            <seealso cref="T:MPT.SE.CrossSection.StressProperties.ITorsion" />
+        </member>
+        <member name="F:MPT.SE.CrossSection.BasicSections.BasicBendingShearTorsionSection._torsionProperties">
+            <summary>
+            The torsional properties.
+            </summary>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicBendingShearTorsionSection.J">
+            <summary>
+            Torsional stiffness. [L^4]
+            </summary>
+            <value>The j.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicBendingShearTorsionSection.C_w">
+            <summary>
+            Warping constant. [L^6]
+            </summary>
+            <value>The c w.</value>
+        </member>
+        <member name="M:MPT.SE.CrossSection.BasicSections.BasicBendingShearTorsionSection.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MPT.SE.CrossSection.BasicSections.BasicBendingShearTorsionSection"/> class.
+            </summary>
+        </member>
+        <member name="M:MPT.SE.CrossSection.BasicSections.BasicBendingShearTorsionSection.GetTorsionProperties">
+            <summary>
+            Gets the torsional properties.
+            </summary>
+            <returns>TorsionProperties.</returns>
+        </member>
+        <member name="T:MPT.SE.CrossSection.BasicSections.BasicSection">
+            <summary>
+            Cross section with basic physical properties based on mass/area distribution.
+            </summary>
+        </member>
+        <member name="F:MPT.SE.CrossSection.BasicSections.BasicSection._extents">
+            <summary>
+            The extents.
+            </summary>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicSection.Extents">
+            <summary>
+            Gets or sets the extents.
+            </summary>
+            <value>The extents.</value>
+        </member>
+        <member name="F:MPT.SE.CrossSection.BasicSections.BasicSection._areaGross">
+            <summary>
+            Gross area.
+            </summary>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicSection.A_g">
+            <summary>
+            Gross area. [L^2]
+            </summary>
+            <value>a g.</value>
+        </member>
+        <member name="F:MPT.SE.CrossSection.BasicSections.BasicSection._centroid">
+            <summary>
+            The center of gravity (elastic neutral axis) offset from the geometric center of the extents.
+            X-axis corresponds to local 33-axis, and Y-axis corresponds to local 22-axis.
+            </summary>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicSection.CentroidOffset_22">
+            <summary>
+            The center of gravity (elastic neutral axis) offset from the geometric center of the extents along the 22-axis.  [L]
+            </summary>
+            <value>The center of gravity.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicSection.CentroidOffset_33">
+            <summary>
+            The center of gravity (elastic neutral axis) offset from the geometric center of the extents along the 33-axis. [L]
+            </summary>
+            <value>The center of gravity.</value>
+        </member>
+        <member name="F:MPT.SE.CrossSection.BasicSections.BasicSection._rotationalInertia">
+            <summary>
+            The rotational inertia properties.
+            </summary>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicSection.I_major">
+            <summary>
+            Moment of inertia about the major-axis. [L^4]
+            </summary>
+            <value>The i major.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicSection.I_minor">
+            <summary>
+            Moment of inertia about the minor-axis. [L^4]
+            </summary>
+            <value>The i minor.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicSection.I_product">
+            <summary>
+            Product of inertia. [L^4]
+            If an area has at least one axis of symmetry, the product of inertia is zero.
+            </summary>
+            <value>The i product.</value>
+        </member>
+        <member name="F:MPT.SE.CrossSection.BasicSections.BasicSection._radiusOfGyration">
+            <summary>
+            The radius of gyration properties.
+            </summary>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicSection.r_major">
+            <summary>
+            Radius of gyration about the major-axis. [L]
+            </summary>
+            <value>The r major.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.BasicSection.r_minor">
+            <summary>
+            Radius of gyration about the minor-axis. [L]
+            </summary>
+            <value>The r minor.</value>
+        </member>
+        <member name="M:MPT.SE.CrossSection.BasicSections.BasicSection.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MPT.SE.CrossSection.BasicSections.BasicSection"/> class.
+            </summary>
+        </member>
+        <member name="M:MPT.SE.CrossSection.BasicSections.BasicSection.GetExtents">
+            <summary>
+            Gets the extents based on the cross section geometry.
+            </summary>
+        </member>
+        <member name="M:MPT.SE.CrossSection.BasicSections.BasicSection.GetAreaGross">
+            <summary>
+            Gets the gross area.
+            </summary>
+            <returns>System.Double.</returns>
+        </member>
+        <member name="M:MPT.SE.CrossSection.BasicSections.BasicSection.GetCenterOfGravity">
+            <summary>
+            Gets the center of gravity.
+            </summary>
+            <returns>CartesianCoordinate.</returns>
+        </member>
+        <member name="M:MPT.SE.CrossSection.BasicSections.BasicSection.GetRotationalInertia">
+            <summary>
+            Gets the rotational inertia.
+            </summary>
+            <returns>MomentOfInertia.</returns>
+        </member>
+        <member name="M:MPT.SE.CrossSection.BasicSections.BasicSection.GetRadiusOfGyration">
+            <summary>
+            Gets the radius of gyration.
+            </summary>
+            <returns>RadiusOfGyration.</returns>
+        </member>
+        <member name="T:MPT.SE.CrossSection.BasicSections.RectangularSection">
+            <summary>
+            Rectangular cross section.
+            Implements the <see cref="T:MPT.SE.CrossSection.BasicSections.BasicBendingShearTorsionSection" />
+            </summary>
+            <seealso cref="T:MPT.SE.CrossSection.BasicSections.BasicBendingShearTorsionSection" />
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.RectangularSection.b">
+            <summary>
+            Width.
+            </summary>
+            <value>The b.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.BasicSections.RectangularSection.d">
+            <summary>
+            Depth.
+            </summary>
+            <value>The d.</value>
+        </member>
+        <member name="M:MPT.SE.CrossSection.BasicSections.RectangularSection.#ctor(System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MPT.SE.CrossSection.BasicSections.RectangularSection"/> class.
+            </summary>
+            <param name="b">Width.</param>
+            <param name="d">Height.</param>
+        </member>
+        <member name="M:MPT.SE.CrossSection.BasicSections.RectangularSection.GetTorsionalStiffness">
+            <summary>
+            Gets the torsional stiffness.
+            </summary>
+            <returns>System.Double.</returns>
+        </member>
+        <member name="M:MPT.SE.CrossSection.BasicSections.RectangularSection.GetExtents">
+            <summary>
+            Sets the extents based on the cross section geometry.
+            </summary>
+        </member>
+        <member name="M:MPT.SE.CrossSection.BasicSections.RectangularSection.GetAreaGross">
+            <summary>
+            Gets the gross area.
+            </summary>
+            <returns>System.Double.</returns>
+        </member>
+        <member name="M:MPT.SE.CrossSection.BasicSections.RectangularSection.GetCenterOfGravity">
+            <summary>
+            Gets the center of gravity.
+            </summary>
+            <returns>CartesianCoordinate.</returns>
+        </member>
+        <member name="M:MPT.SE.CrossSection.BasicSections.RectangularSection.GetRotationalInertia">
+            <summary>
+            Gets the rotational inertia.
+            </summary>
+            <returns>MomentOfInertia.</returns>
+        </member>
+        <member name="M:MPT.SE.CrossSection.BasicSections.RectangularSection.GetPlasticBendingProperties">
+            <summary>
+            Gets the plastic bending properties.
+            </summary>
+            <returns>PlasticBendingProperties.</returns>
+        </member>
+        <member name="M:MPT.SE.CrossSection.BasicSections.RectangularSection.GetShearProperties">
+            <summary>
+            Gets the shear properties.
+            </summary>
+            <returns>ShearProperties.</returns>
+        </member>
+        <member name="M:MPT.SE.CrossSection.BasicSections.RectangularSection.GetTorsionProperties">
+            <summary>
+            Gets the torsional properties.
+            </summary>
+            <returns>TorsionProperties.</returns>
+        </member>
+        <member name="T:MPT.SE.CrossSection.StressProperties.ElasticBendingProperties">
+            <summary>
+            Represents elastic bending properties of a cross section.
+            </summary>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.ElasticBendingProperties.Extents_33positive">
+            <summary>
+            The distance along the 33-axis to the most distant fiber under positive bending stress about the 22-axis. [L]
+            </summary>
+            <value>The x positive.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.ElasticBendingProperties.Extents_33negative">
+            <summary>
+            The distance along the 33-axis to the most distant fiber under negative bending stress about the 22-axis. [L]
+            </summary>
+            <value>The x negative.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.ElasticBendingProperties.S_22positive">
+            <summary>
+            Elastic section modulus about the 22-axis under positive bending. [L^3]
+            </summary>
+            <value>The s 22positive.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.ElasticBendingProperties.S_22negative">
+            <summary>
+            Elastic section modulus about the 22-axis under negative bending. [L^3]
+            </summary>
+            <value>The s 22negative.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.ElasticBendingProperties.Extents_22positive">
+            <summary>
+            The distance along the 22-axis to the most distant fiber under positive bending stress about the 33-axis. [L]
+            </summary>
+            <value>The y positive.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.ElasticBendingProperties.Extents_22negative">
+            <summary>
+            The distance along the 22-axis to the most distant fiber under negative bending stress about the 33-axis. [L]
+            </summary>
+            <value>The y negative.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.ElasticBendingProperties.S_33positive">
+            <summary>
+            Elastic section modulus about the 33-axis under positive bending. [L^3]
+            </summary>
+            <value>The s 33positive.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.ElasticBendingProperties.S_33negative">
+            <summary>
+            Elastic section modulus about the 33-axis under negative bending. [L^3]
+            </summary>
+            <value>The s 33negative.</value>
+        </member>
+        <member name="M:MPT.SE.CrossSection.StressProperties.ElasticBendingProperties.#ctor(MPT.Geometry.Tools.PointExtents,MPT.Math.Coordinates.CartesianCoordinate,MPT.SE.CrossSection.AreaProperties.MomentOfInertia)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MPT.SE.CrossSection.StressProperties.ElasticBendingProperties"/> class.
+            </summary>
+            <param name="extents">The extents.</param>
+            <param name="centroid">The centroid.</param>
+            <param name="rotationalInertia">The rotational inertia.</param>
+        </member>
+        <member name="M:MPT.SE.CrossSection.StressProperties.ElasticBendingProperties.CalculateExtentsAlignedAtCentroid(MPT.Geometry.Tools.PointExtents,MPT.Math.Coordinates.CartesianCoordinate)">
+            <summary>
+            Calculates the extents aligned at centroid.
+            </summary>
+            <param name="extents">The extents.</param>
+            <param name="centroid">The centroid.</param>
+            <returns>PointExtents.</returns>
+        </member>
+        <member name="M:MPT.SE.CrossSection.StressProperties.ElasticBendingProperties.CalculateElasticModulus(System.Double,System.Double)">
+            <summary>
+            Calculates the elastic modulus.
+            </summary>
+            <param name="rotationalInertia">The rotational inertia.</param>
+            <param name="distanceToExtremeFiber">The distance to extreme fiber.</param>
+            <returns>System.Double.</returns>
+        </member>
+        <member name="T:MPT.SE.CrossSection.StressProperties.IBending">
+            <summary>
+            Interface IBending
+            Implements the <see cref="T:MPT.SE.CrossSection.StressProperties.IBendingElastic" />
+            Implements the <see cref="T:MPT.SE.CrossSection.StressProperties.IBendingPlastic" />
+            </summary>
+            <seealso cref="T:MPT.SE.CrossSection.StressProperties.IBendingElastic" />
+            <seealso cref="T:MPT.SE.CrossSection.StressProperties.IBendingPlastic" />
+        </member>
+        <member name="T:MPT.SE.CrossSection.StressProperties.IBendingElastic">
+            <summary>
+            Interface IBendingElastic
+            </summary>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.IBendingElastic.S_majorPositive">
+            <summary>
+            Elastic section modulus about the major-axis under positive bending. [L^3]
+            </summary>
+            <value>The s major positive.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.IBendingElastic.S_majorNegative">
+            <summary>
+            Elastic section modulus about the major-axis under negative bending. [L^3]
+            </summary>
+            <value>The s major negative.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.IBendingElastic.S_minorPositive">
+            <summary>
+            Elastic section modulus about the minor-axis under positive bending. [L^3]
+            </summary>
+            <value>The s minor positive.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.IBendingElastic.S_minorNegative">
+            <summary>
+            Elastic section modulus about the minor-axis under negative bending. [L^3]
+            </summary>
+            <value>The s minor negative.</value>
+        </member>
+        <member name="T:MPT.SE.CrossSection.StressProperties.IBendingPlastic">
+            <summary>
+            Interface IBendingPlastic
+            </summary>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.IBendingPlastic.PlasticCentroidOffset_major">
+            <summary>
+            Coordinates of the plastic centroid (plastic neutral axis) offset from the elastic centroid (elastic neutral axis) used for major-axis bending. [L]
+            </summary>
+            <value>The plastic centroid.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.IBendingPlastic.PlasticCentroidOffset_minor">
+            <summary>
+            Coordinates of the plastic centroid (plastic neutral axes) offset from the elastic centroid (elastic neutral axis) used for minor-axis bending. [L]
+            </summary>
+            <value>The plastic centroid.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.IBendingPlastic.Z_major">
+            <summary>
+            Plastic section modulus about the major-axis. [L^3]
+            </summary>
+            <value>The z major.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.IBendingPlastic.Z_minor">
+            <summary>
+            Plastic section modulus about the minor-axis. [L^3]
+            </summary>
+            <value>The z minor.</value>
+        </member>
+        <member name="T:MPT.SE.CrossSection.StressProperties.IShear">
+            <summary>
+            Interface IShearStress
+            </summary>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.IShear.A_vMajor">
+            <summary>
+            Shear area along the major-axis. [L^2]
+            </summary>
+            <value>a v major.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.IShear.A_vMinor">
+            <summary>
+            Shear area along the minor-axis. [L^2]
+            </summary>
+            <value>a v minor.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.IShear.ShearCenterOffset_major">
+            <summary>
+            Coordinates of the shear center offset from the elastic centroid (elastic neutral axis) used for major-axis shear. [L]
+            </summary>
+            <value>The shear center offset major.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.IShear.ShearCenterOffset_minor">
+            <summary>
+            Coordinates of the shear center offset from the elastic centroid (elastic neutral axis) used for minor-axis shear. [L]
+            </summary>
+            <value>The shear center offset minor.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.IShear.r_o">
+            <summary>
+            Polar radius of gyration about the shear center. [L]
+            </summary>
+            <value>The r o.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.IShear.H">
+            <summary>
+            Gets the h.
+            </summary>
+            <value>The h.</value>
+        </member>
+        <member name="T:MPT.SE.CrossSection.StressProperties.ITorsion">
+            <summary>
+            Interface ITorsionStress
+            </summary>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.ITorsion.J">
+            <summary>
+            Torsional stiffness. [L^4]
+            </summary>
+            <value>The j.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.ITorsion.C_w">
+            <summary>
+            Warping constant. [L^6]
+            </summary>
+            <value>The c w.</value>
+        </member>
+        <member name="T:MPT.SE.CrossSection.StressProperties.PlasticBendingProperties">
+            <summary>
+            Represents plastic bending properties of a cross section.
+            </summary>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.PlasticBendingProperties.PlasticCentroid">
+            <summary>
+            Coordinates of the plastic neutral axis relative to the centroid. [L]
+            </summary>
+            <value>The plastic neutral axis.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.PlasticBendingProperties.Z_22">
+            <summary>
+            Plastic section modulus about the 22-axis. [L^3]
+            </summary>
+            <value>The z 22.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.PlasticBendingProperties.Z_33">
+            <summary>
+            Plastic section modulus about the 33-axis. [L^3]
+            </summary>
+            <value>The z 33.</value>
+        </member>
+        <member name="M:MPT.SE.CrossSection.StressProperties.PlasticBendingProperties.#ctor(MPT.Math.Coordinates.CartesianCoordinate,System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MPT.SE.CrossSection.StressProperties.PlasticBendingProperties"/> class.
+            </summary>
+            <param name="pna">The pna.</param>
+            <param name="z22">The Z22.</param>
+            <param name="z33">The Z33.</param>
+        </member>
+        <member name="T:MPT.SE.CrossSection.StressProperties.ShearProperties">
+            <summary>
+            Represents shear properties of a cross section.
+            </summary>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.ShearProperties.A_v22">
+            <summary>
+            Shear area along the 22-axis. [L^2]
+            </summary>
+            <value>a V22.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.ShearProperties.A_v33">
+            <summary>
+            Shear area along the 33-axis. [L^2]
+            </summary>
+            <value>a V33.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.ShearProperties.ShearCenter">
+            <summary>
+            Coordinates of the shear center relative to the elastic centroid.
+            </summary>
+            <value>The shear center.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.ShearProperties.r_o">
+            <summary>
+            Polar radius of gyration about the shear center. [L]
+            </summary>
+            <value>The r o.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.ShearProperties.H">
+            <summary>
+            Gets the h.
+            </summary>
+            <value>The h.</value>
+        </member>
+        <member name="M:MPT.SE.CrossSection.StressProperties.ShearProperties.#ctor(System.Double,System.Double,MPT.Math.Coordinates.CartesianCoordinate,System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MPT.SE.CrossSection.StressProperties.ShearProperties" /> class.
+            </summary>
+            <param name="av22">Shear area along the 22-axis.</param>
+            <param name="av33">Shear area along the 33-axis.</param>
+            <param name="shearCenter">The shear center.</param>
+            <param name="area">The area.</param>
+            <param name="j">Polar moment of inertia.</param>
+        </member>
+        <member name="M:MPT.SE.CrossSection.StressProperties.ShearProperties.CalculateR_o(MPT.Math.Coordinates.CartesianCoordinate,System.Double,System.Double)">
+            <summary>
+            Calculates the polar radius of gyration about the shear center. [L]
+            </summary>
+            <param name="shearCenter">The shear center.</param>
+            <param name="area">The area. [L^2]</param>
+            <param name="j">Polar moment of inertia. [L^4]</param>
+            <returns>System.Double.</returns>
+        </member>
+        <member name="M:MPT.SE.CrossSection.StressProperties.ShearProperties.CalculateH(MPT.Math.Coordinates.CartesianCoordinate,System.Double)">
+            <summary>
+            Calculates the h.
+            </summary>
+            <param name="shearCenter">The shear center.</param>
+            <param name="ro">The polar radius of gyration about the shear center.</param>
+            <returns>System.Double.</returns>
+        </member>
+        <member name="T:MPT.SE.CrossSection.StressProperties.TorsionProperties">
+            <summary>
+            Represents torsional properties of a cross section.
+            </summary>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.TorsionProperties.J">
+            <summary>
+            Torsional stiffness. [L^4]
+            </summary>
+            <value>The j.</value>
+        </member>
+        <member name="P:MPT.SE.CrossSection.StressProperties.TorsionProperties.C_w">
+            <summary>
+            Warping constant. [L^6]
+            </summary>
+            <value>The c w.</value>
+        </member>
+        <member name="M:MPT.SE.CrossSection.StressProperties.TorsionProperties.#ctor(System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MPT.SE.CrossSection.StressProperties.TorsionProperties" /> class.
+            </summary>
+            <param name="j">Torsional stiffness.</param>
+            <param name="cw">Warping constant.</param>
+        </member>
+    </members>
+</doc>

@@ -22,7 +22,7 @@ namespace MPT.SE.CrossSection.AreaProperties
         /// Gross area [L^2].
         /// </summary>
         /// <value>a g.</value>
-        public double A_g { get; }
+        double A_g { get; }
 
     }
 }

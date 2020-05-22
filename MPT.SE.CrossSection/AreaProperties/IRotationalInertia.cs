@@ -23,19 +23,19 @@ namespace MPT.SE.CrossSection.AreaProperties
         /// Moment of inertia about the major-axis. [L^4]
         /// </summary>
         /// <value>The i major.</value>
-        public double I_major { get; }
+        double I_major { get; }
 
         /// <summary>
         /// Moment of inertia about the minor-axis. [L^4]
         /// </summary>
         /// <value>The i minor.</value>
-        public double I_minor { get; }
+        double I_minor { get; }
 
         /// <summary>
         /// Product of inertia. [L^4]
         /// If an area has at least one axis of symmetry, the product of inertia is zero.
         /// </summary>
         /// <value>The i product.</value>
-        public double I_product { get; }
+        double I_product { get; }
     }
 }

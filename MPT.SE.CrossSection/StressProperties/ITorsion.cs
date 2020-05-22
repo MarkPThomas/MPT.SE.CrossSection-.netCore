@@ -24,12 +24,12 @@ namespace MPT.SE.CrossSection.StressProperties
         /// Torsional stiffness. [L^4]
         /// </summary>
         /// <value>The j.</value>
-        public double J { get; }
+        double J { get; }
 
         /// <summary>
         /// Warping constant. [L^6]
         /// </summary>
         /// <value>The c w.</value>
-        public double C_w { get; }
+        double C_w { get; }
     }
 }

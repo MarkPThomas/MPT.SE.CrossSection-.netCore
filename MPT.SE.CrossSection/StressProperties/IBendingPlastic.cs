@@ -24,24 +24,24 @@ namespace MPT.SE.CrossSection.StressProperties
         /// Coordinates of the plastic centroid (plastic neutral axis) offset from the elastic centroid (elastic neutral axis) used for major-axis bending. [L]
         /// </summary>
         /// <value>The plastic centroid.</value>
-        public double PlasticCentroidOffset_major { get; }
+        double PlasticCentroidOffset_major { get; }
 
         /// <summary>
         /// Coordinates of the plastic centroid (plastic neutral axes) offset from the elastic centroid (elastic neutral axis) used for minor-axis bending. [L]
         /// </summary>
         /// <value>The plastic centroid.</value>
-        public double PlasticCentroidOffset_minor { get; }
+        double PlasticCentroidOffset_minor { get; }
 
         /// <summary>
         /// Plastic section modulus about the major-axis. [L^3]
         /// </summary>
         /// <value>The z major.</value>
-        public double Z_major { get; }
+        double Z_major { get; }
 
         /// <summary>
         /// Plastic section modulus about the minor-axis. [L^3]
         /// </summary>
         /// <value>The z minor.</value>
-        public double Z_minor { get; }
+        double Z_minor { get; }
     }
 }
