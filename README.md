@@ -1,7 +1,7 @@
 # MPT.SE.CrossSection
 A library and classes for working with various cross-sections for statics and structural engineering purposes. Written in C# for .Net Core.
 
-**Travis CI** (Ubuntu Linux OS): [![Build Status](https://travis-ci.org/MarkPThomas/MPT.SE.CrossSection-.netCore.svg?branch=master)](https://travis-ci.org/MarkPThomas/MPT.SE.CrossSection-.netCore)
+**Travis CI** (Ubuntu Linux OS): [![Build Status](https://travis-ci.org/MarkPThomas/MPT.SE.CrossSection-.netCore.svg?branch=master&kill_cache=1)](https://travis-ci.org/MarkPThomas/MPT.SE.CrossSection-.netCore)
 
 **AppVeyor** (Windows OS): [![Build status](https://ci.appveyor.com/api/projects/status/9tnl7d7g4d37ispw?svg=true)](https://ci.appveyor.com/project/MarkPThomas/mpt-se-crosssection-netcore) 
 [![AppVeyor tests](https://img.shields.io/appveyor/tests/MarkPThomas/mpt-se-crosssection-netcore.svg)](https://ci.appveyor.com/project/MarkPThomas/mpt-se-crosssection-netcore/build/tests)
