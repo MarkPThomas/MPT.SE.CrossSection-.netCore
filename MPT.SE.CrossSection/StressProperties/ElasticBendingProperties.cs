@@ -14,6 +14,7 @@
 using MPT.Geometry.Tools;
 using MPT.Math.Coordinates;
 using MPT.SE.CrossSection.AreaProperties;
+using NMath = System.Math;
 
 namespace MPT.SE.CrossSection.StressProperties
 {
@@ -81,10 +82,10 @@ namespace MPT.SE.CrossSection.StressProperties
         public ElasticBendingProperties(PointExtents extents, CartesianCoordinate centroid, MomentOfInertia rotationalInertia)
         {
             PointExtents extentsAlignedAtCentroid = CalculateExtentsAlignedAtCentroid(extents, centroid);
-            Extents_33positive = extentsAlignedAtCentroid.MaxX;
-            Extents_33negative = extentsAlignedAtCentroid.MinX;
-            Extents_22positive = extentsAlignedAtCentroid.MaxY;
-            Extents_22negative = extentsAlignedAtCentroid.MinY;
+            Extents_33positive = NMath.Abs(extentsAlignedAtCentroid.MaxX);
+            Extents_33negative = NMath.Abs(extentsAlignedAtCentroid.MinX);
+            Extents_22positive = NMath.Abs(extentsAlignedAtCentroid.MaxY);
+            Extents_22negative = NMath.Abs(extentsAlignedAtCentroid.MinY);
 
             S_22positive = CalculateElasticModulus(rotationalInertia.I_22, Extents_33positive);
             S_22negative = CalculateElasticModulus(rotationalInertia.I_22, Extents_33negative);
@@ -101,14 +102,7 @@ namespace MPT.SE.CrossSection.StressProperties
         /// <returns>PointExtents.</returns>
         public static PointExtents CalculateExtentsAlignedAtCentroid(PointExtents extents, CartesianCoordinate centroid)
         {
-            double x_positive = (extents.MaxX - extents.MinX) / 2 - centroid.X;
-            double y_positive = (extents.MaxY - extents.MinY) / 2 - centroid.Y;
-            double x_negative = (extents.MaxX - extents.MinX) / 2 + centroid.X;
-            double y_negative = (extents.MaxY - extents.MinY) / 2 + centroid.Y;
-
-            PointExtents extentsAlignedAtCentroid = new PointExtents();
-            extentsAlignedAtCentroid.Add(new CartesianCoordinate(x_positive, y_positive));
-            extentsAlignedAtCentroid.Add(new CartesianCoordinate(x_negative, y_negative));
+            PointExtents extentsAlignedAtCentroid = extents.Translate(-centroid.X, -centroid.Y) as PointExtents;
 
             return extentsAlignedAtCentroid;
         }

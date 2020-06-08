@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using MPT.Math.Coordinates;
 using MPT.SE.CrossSection.StressProperties;
 using System;
 
@@ -106,11 +107,34 @@ namespace MPT.SE.CrossSection.BasicSections
         {
             return new ElasticBendingProperties(Extents, _centroid.Value, _rotationalInertia.Value);
         }
-
         /// <summary>
         /// Gets the plastic bending properties.
         /// </summary>
         /// <returns>PlasticBendingProperties.</returns>
-        protected abstract PlasticBendingProperties GetPlasticBendingProperties();
+        protected PlasticBendingProperties GetPlasticBendingProperties()
+        {
+            return new PlasticBendingProperties(
+                GetPlasticNeutralAxisCoordinate(),
+                Get22PlasticSectionModulus(),
+                Get33PlasticSectionModulus());
+        }
+
+        /// <summary>
+        /// Gets the plastic section modulus about the 2-2 axis.
+        /// </summary>
+        /// <returns>System.Double.</returns>
+        protected abstract double Get22PlasticSectionModulus();
+
+        /// <summary>
+        /// Gets the plastic section modulus about the 3-3 axis.
+        /// </summary>
+        /// <returns>System.Double.</returns>
+        protected abstract double Get33PlasticSectionModulus();
+
+        /// <summary>
+        /// Gets the plastic neutral axis coordinate.
+        /// </summary>
+        /// <returns>CartesianCoordinate.</returns>
+        protected abstract CartesianCoordinate GetPlasticNeutralAxisCoordinate();
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MPT.Math.Coordinates;
 using MPT.SE.CrossSection.BasicSections;
 using NUnit.Framework;
 
@@ -10,9 +11,12 @@ namespace MPT.SE.CrossSection.UnitTests.Basic_Sections
     public class RectangularSectionTests
     {
         [Test]
-        public void RectangularPropertiesCheck()
+        public void RectangularSection_Initialization_and_Basic_Properties_Check()
         {
-            RectangularSection section = new RectangularSection(0.375, 1.5);
+            double width = 0.375;
+            double height = 1.5;
+
+            RectangularSection section = new RectangularSection(width, height);
             Assert.AreEqual(0.5625, section.A_g, 0.0001);
             Assert.AreEqual(0, section.CentroidOffset_22, 0.0001);
             Assert.AreEqual(0, section.CentroidOffset_33, 0.0001);
@@ -37,6 +41,24 @@ namespace MPT.SE.CrossSection.UnitTests.Basic_Sections
             Assert.AreEqual(1, section.H, 0.0001);
             Assert.AreEqual(0.0222, section.J, 0.0001);
             Assert.AreEqual(0, section.C_w, 0.0001);
+        }
+
+        [Test]
+        public void RectangularPropertiesCheck_Boundary_Returns_Coordinates_of_Shape_Boundary()
+        {
+            double width = 0.375;
+            double height = 1.5;
+
+            RectangularSection section = new RectangularSection(width, height);
+            IList<CartesianCoordinate> boundary = section.Boundary;
+            Assert.AreEqual(width / 2, boundary[0].X);
+            Assert.AreEqual(height / 2, boundary[0].Y);
+            Assert.AreEqual(-width / 2, boundary[1].X);
+            Assert.AreEqual(height / 2, boundary[1].Y);
+            Assert.AreEqual(-width / 2, boundary[2].X);
+            Assert.AreEqual(-height / 2, boundary[2].Y);
+            Assert.AreEqual(width / 2, boundary[3].X);
+            Assert.AreEqual(-height / 2, boundary[3].Y);
         }
     }
 }

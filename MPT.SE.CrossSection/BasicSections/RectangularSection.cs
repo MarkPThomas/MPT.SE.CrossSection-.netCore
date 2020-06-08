@@ -15,8 +15,6 @@
 using MPT.Geometry.Tools;
 using MPT.Math.Coordinates;
 using MPT.Math.NumberTypeExtensions;
-using MPT.SE.CrossSection.AreaProperties;
-using MPT.SE.CrossSection.StressProperties;
 using System.Collections.Generic;
 using NMath = System.Math;
 
@@ -55,32 +53,20 @@ namespace MPT.SE.CrossSection.BasicSections
         }
         #endregion
 
-        #region Methods: Protected Virtual
+        #region Methods: Basic Section
         /// <summary>
-        /// Gets the torsional stiffness.
+        /// Gets the boundary coordinates based on the cross-section geometry.
         /// </summary>
-        /// <returns>System.Double.</returns>
-        protected virtual double GetTorsionalStiffness()
+        /// <returns>PointBoundary.</returns>
+        protected override PointBoundary GetBoundary()
         {
-            double a1 = 0.5 * NMath.Max(b, d);
-            double a2 = 0.5 * NMath.Min(b, d);
-
-            return a1 * a2.Cubed() * ((16d / 3) - 3.36 * (a2 / a1) * (1 - (a2 / a1).Pow(4) / 12));
-        }
-        #endregion
-
-        #region Methods: Protected Override
-        /// <summary>
-        /// Sets the extents based on the cross section geometry.
-        /// </summary>
-        protected override PointExtents GetExtents()
-        {
-            return new PointExtents(
+            return new PointBoundary(
                 new List<CartesianCoordinate>() {
                     new CartesianCoordinate(b/2, d/2),
-                    new CartesianCoordinate(-b/2, -d/2)
-                }
-                );
+                    new CartesianCoordinate(-b/2, d/2),
+                    new CartesianCoordinate(-b/2, -d/2),
+                    new CartesianCoordinate(b/2, -d/2)
+                });
         }
 
         /// <summary>
@@ -102,50 +88,111 @@ namespace MPT.SE.CrossSection.BasicSections
         }
 
         /// <summary>
-        /// Gets the rotational inertia.
+        /// Get the rotational inertia about the 2-2 axis.
         /// </summary>
-        /// <returns>MomentOfInertia.</returns>
-        protected override MomentOfInertia GetRotationalInertia()
+        /// <returns>System.Double.</returns>
+        protected override double Get22RotationalInertia()
         {
-            double i22 = d * b.Cubed() / 12;
-            double i33 = b * d.Cubed() / 12;
-            double i23 = 0;
-            return new MomentOfInertia(i22, i33, i23);
+            return d * b.Cubed() / 12;
         }
 
         /// <summary>
-        /// Gets the plastic bending properties.
+        /// Get the rotational inertia about the 3-3 axis.
         /// </summary>
-        /// <returns>PlasticBendingProperties.</returns>
-        protected override PlasticBendingProperties GetPlasticBendingProperties()
+        /// <returns>System.Double.</returns>
+        protected override double Get33RotationalInertia()
         {
-            CartesianCoordinate pna = new CartesianCoordinate(0, 0);
-            double z22 = d * b.Squared() / 4;
-            double z33 = b * d.Squared() / 4;
-
-            return new PlasticBendingProperties(pna, z22, z33);
+            return b * d.Cubed() / 12;
         }
 
         /// <summary>
-        /// Gets the shear properties.
+        /// Get the product rotational inertia about the 2-3 axis
         /// </summary>
-        /// <returns>ShearProperties.</returns>
-        protected override ShearProperties GetShearProperties()
+        /// <returns>System.Double.</returns>
+        protected override double Get23RotationalInertia()
         {
-            double av22 = _areaGross.Value;
-            double av33 = _areaGross.Value;
-            CartesianCoordinate shearCenter = new CartesianCoordinate(0, 0);
-            return new ShearProperties(av22, av33, shearCenter, _areaGross.Value, _rotationalInertia.Value.J);
+            return 0;
+        }
+        #endregion
+
+        #region Methods: Plastic Bending                
+        /// <summary>
+        /// Gets the plastic section modulus about the 2-2 axis.
+        /// </summary>
+        /// <returns>System.Double.</returns>
+        protected override double Get22PlasticSectionModulus()
+        {
+            return d * b.Squared() / 4;
         }
 
         /// <summary>
-        /// Gets the torsional properties.
+        /// Gets the plastic section modulus about the 3-3 axis.
         /// </summary>
-        /// <returns>TorsionProperties.</returns>
-        protected override TorsionProperties GetTorsionProperties()
+        /// <returns>System.Double.</returns>
+        protected override double Get33PlasticSectionModulus()
         {
-            double cw = 0;
-            return new TorsionProperties(GetTorsionalStiffness(), cw);
+            return b * d.Squared() / 4;
+        }
+
+        /// <summary>
+        /// Gets the plastic neutral axis coordinate.
+        /// </summary>
+        /// <returns>CartesianCoordinate.</returns>
+        protected override CartesianCoordinate GetPlasticNeutralAxisCoordinate()
+        {
+            return new CartesianCoordinate(0, 0);
+        }
+        #endregion
+
+        #region Methods: Shear                
+        /// <summary>
+        /// Gets the shear area along the 2-2 axis.
+        /// </summary>
+        /// <returns>System.Double.</returns>
+        protected override double Get22ShearArea()
+        {
+            return _areaGross.Value;
+        }
+
+        /// <summary>
+        /// Gets the shear area along the 3-3 axis.
+        /// </summary>
+        /// <returns>System.Double.</returns>
+        protected override double Get33ShearArea()
+        {
+            return _areaGross.Value;
+        }
+
+        /// <summary>
+        /// Gets the shear center coordinate.
+        /// </summary>
+        /// <returns>CartesianCoordinate.</returns>
+        protected override CartesianCoordinate GetShearCenterCoordinate()
+        {
+            return new CartesianCoordinate(0, 0);
+        }
+        #endregion
+
+        #region Methods: Torsional        
+        /// <summary>
+        /// Gets the warping constant.
+        /// </summary>
+        /// <returns>System.Double.</returns>
+        protected override double GetWarpingConstant()
+        {
+            return 0;
+        }
+
+        /// <summary>
+        /// Gets the torsional stiffness.
+        /// </summary>
+        /// <returns>System.Double.</returns>
+        protected override double GetTorsionalStiffness()
+        {
+            double a1 = 0.5 * NMath.Max(b, d);
+            double a2 = 0.5 * NMath.Min(b, d);
+
+            return a1 * a2.Cubed() * ((16d / 3) - 3.36 * (a2 / a1) * (1 - (a2 / a1).Pow(4) / 12));
         }
         #endregion
     }

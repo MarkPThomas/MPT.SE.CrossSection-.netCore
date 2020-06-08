@@ -15,6 +15,7 @@ using MPT.Geometry.Tools;
 using MPT.Math.Coordinates;
 using MPT.SE.CrossSection.AreaProperties;
 using System;
+using System.Collections.Generic;
 
 namespace MPT.SE.CrossSection.BasicSections
 {
@@ -31,6 +32,17 @@ namespace MPT.SE.CrossSection.BasicSections
         // 
         // Perhaps in all cases, always have geometric, with a wrapper created over for Local/Principal/Major-Minor equivalents with a rotational offset.
 
+
+        /// <summary>
+        /// The boundary
+        /// </summary>
+        protected Lazy<PointBoundary> _boundary;
+        /// <summary>
+        /// Gets the boundary.
+        /// </summary>
+        /// <value>The boundary.</value>
+        public IList<CartesianCoordinate> Boundary => _boundary.Value.Coordinates;
+
         /// <summary>
         /// The extents.
         /// </summary>
@@ -40,7 +52,6 @@ namespace MPT.SE.CrossSection.BasicSections
         /// </summary>
         /// <value>The extents.</value>
         public PointExtents Extents => _extents.Value;
-
 
         /// <summary>
         /// Gross area.
@@ -111,6 +122,7 @@ namespace MPT.SE.CrossSection.BasicSections
         /// </summary>
         protected BasicSection()
         {
+            _boundary = new Lazy<PointBoundary>(() => GetBoundary());
             _extents = new Lazy<PointExtents>(() => GetExtents());
             _areaGross = new Lazy<double>(() => GetAreaGross());
             _centroid = new Lazy<CartesianCoordinate>(() => GetCenterOfGravity());
@@ -119,9 +131,18 @@ namespace MPT.SE.CrossSection.BasicSections
         }
 
         /// <summary>
-        /// Gets the extents based on the cross section geometry.
+        /// Sets the extents based on the cross-section geometry.
         /// </summary>
-        protected abstract PointExtents GetExtents();
+        protected PointExtents GetExtents()
+        {
+            return new PointExtents(GetBoundary().Coordinates);
+        }
+
+        /// <summary>
+        /// Gets the boundary coordinates based on the cross-section geometry.
+        /// </summary>
+        /// <returns>PointBoundary.</returns>
+        protected abstract PointBoundary GetBoundary();
 
         /// <summary>
         /// Gets the gross area.
@@ -139,7 +160,32 @@ namespace MPT.SE.CrossSection.BasicSections
         /// Gets the rotational inertia.
         /// </summary>
         /// <returns>MomentOfInertia.</returns>
-        protected abstract MomentOfInertia GetRotationalInertia();
+        protected MomentOfInertia GetRotationalInertia()
+        {
+            return new MomentOfInertia(
+                Get22RotationalInertia(),
+                Get33RotationalInertia(),
+                Get23RotationalInertia());
+        }
+
+        /// <summary>
+        /// Get the rotational inertia about the 2-2 axis.
+        /// </summary>
+        /// <returns>System.Double.</returns>
+        protected abstract double Get22RotationalInertia();
+
+        /// <summary>
+        /// Get the rotational inertia about the 3-3 axis.
+        /// </summary>
+        /// <returns>System.Double.</returns>
+        protected abstract double Get33RotationalInertia();
+
+        /// <summary>
+        /// Get the product rotational inertia about the 2-3 axis
+        /// </summary>
+        /// <returns>System.Double.</returns>
+        protected abstract double Get23RotationalInertia();
+
 
         /// <summary>
         /// Gets the radius of gyration.

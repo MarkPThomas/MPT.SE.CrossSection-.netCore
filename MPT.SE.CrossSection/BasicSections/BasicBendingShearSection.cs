@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using MPT.Math.Coordinates;
 using MPT.SE.CrossSection.StressProperties;
 using System;
 
@@ -78,6 +79,36 @@ namespace MPT.SE.CrossSection.BasicSections
         /// Gets the shear properties.
         /// </summary>
         /// <returns>ShearProperties.</returns>
-        protected abstract ShearProperties GetShearProperties();
+        /// <summary>
+        /// Gets the shear properties.
+        /// </summary>
+        /// <returns>ShearProperties.</returns>
+        protected ShearProperties GetShearProperties()
+        {
+            return new ShearProperties(
+                Get22ShearArea(),
+                Get33ShearArea(),
+                GetShearCenterCoordinate(),
+                _areaGross.Value,
+                _rotationalInertia.Value.J);
+        }
+
+        /// <summary>
+        /// Gets the shear area along the 2-2 axis.
+        /// </summary>
+        /// <returns>System.Double.</returns>
+        protected abstract double Get22ShearArea();
+
+        /// <summary>
+        /// Gets the shear area along the 3-3 axis.
+        /// </summary>
+        /// <returns>System.Double.</returns>
+        protected abstract double Get33ShearArea();
+
+        /// <summary>
+        /// Gets the shear center coordinate.
+        /// </summary>
+        /// <returns>CartesianCoordinate.</returns>
+        protected abstract CartesianCoordinate GetShearCenterCoordinate();
     }
 }

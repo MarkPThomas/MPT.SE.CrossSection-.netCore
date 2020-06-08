@@ -47,10 +47,28 @@ namespace MPT.SE.CrossSection.BasicSections
         {
             _torsionProperties = new Lazy<TorsionProperties>(() => GetTorsionProperties());
         }
+
+        /// <summary>
+        /// Gets the warping constant.
+        /// </summary>
+        /// <returns>System.Double.</returns>
+        protected abstract double GetWarpingConstant();
+
+        /// <summary>
+        /// Gets the torsional stiffness.
+        /// </summary>
+        /// <returns>System.Double.</returns>
+        protected abstract double GetTorsionalStiffness();
+
         /// <summary>
         /// Gets the torsional properties.
         /// </summary>
         /// <returns>TorsionProperties.</returns>
-        protected abstract TorsionProperties GetTorsionProperties();
+        protected TorsionProperties GetTorsionProperties()
+        {
+            return new TorsionProperties(
+                GetTorsionalStiffness(), 
+                GetWarpingConstant());
+        }
     }
 }
